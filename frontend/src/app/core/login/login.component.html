@@ -1,0 +1,72 @@
+<div class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-md bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl p-8">
+    <h1 class="text-2xl font-semibold mb-6 text-center">Login</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-5">
+      <!-- E-mail -->
+      <div>
+        <label for="email" class="block text-sm font-medium mb-1">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="w-full rounded-lg border border-slate-600 bg-slate-900/70 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        />
+
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+          <div class="mt-1 text-xs text-red-400">
+            @if (form.controls.email.errors?.['required']) {
+              <span>E-mail is verplicht</span>
+            }
+            @if (form.controls.email.errors?.['email']) {
+              <span>Ongeldig e-mail adres</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-sm font-medium mb-1">Wachtwoord</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="w-full rounded-lg border border-slate-600 bg-slate-900/70 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        />
+
+        @if (form.controls.password.touched && form.controls.password.invalid) {
+          <div class="mt-1 text-xs text-red-400">
+            Wachtwoord is verplicht
+          </div>
+        }
+      </div>
+
+      <!-- Submit button -->
+      <button
+        type="submit"
+        [disabled]="form.invalid || loading"
+        class="w-full flex justify-center items-center rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed px-4 py-2 text-sm font-medium text-slate-900 transition-colors"
+      >
+        @if (!loading) {
+          <span>Login</span>
+        }
+        @else {
+          <span>Aan het inloggen...</span>
+        }
+      </button>
+
+      <!-- Error message -->
+      @if (errorMessage) {
+        <p class="text-sm text-red-400 mt-1 text-center">
+          {{ errorMessage }}
+        </p>
+      }
+    </form>
+
+    <p class="mt-6 text-center text-sm text-slate-300">
+      Nog geen account?
+      <a routerLink="/register" class="text-emerald-400 hover:underline">Registreer hier</a>
+    </p>
+  </div>
+</div>
