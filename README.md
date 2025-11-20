@@ -3,6 +3,10 @@
 Tijd aan gewerkt:
 - Ongeveer 4 uur
 
+Postman
+- U kan het Postman collection bestand importeren in uw eigen Postman. Het zit in de root van deze repo:
+  - ``` Bergen.postman_collection.json ```
+
 Functionaliteiten: 
 - Registreren, inloggen en uitloggen (Laravel Sanctum API tokens)
 - Alleen geauthenticeerde gebruikers kunnen bergen bekijken, toevoegen, bewerken en verwijderen
@@ -16,9 +20,9 @@ Functionaliteiten:
 
 ## 1. Vereisten Zorg dat de volgende tools geïnstalleerd zijn: 
 - [Docker](https://www.docker.com/)
-- [PHP 8.3+](https://www.php.net/)
+- [PHP](https://www.php.net/)
 - [Composer](https://getcomposer.org/)
-- [Node.js 18+](https://nodejs.org/)
+- [Node.js](https://nodejs.org/)
 - [Angular CLI](https://angular.io/cli)
   
 Projectstructuur: 
