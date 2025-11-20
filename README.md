@@ -18,7 +18,8 @@ Functionaliteiten:
 - Alle opmaak gedaan met Tailwind
 
 
-## 1. Vereisten Zorg dat de volgende tools geïnstalleerd zijn: 
+## 1. Vereisten 
+Zorg dat de volgende tools geïnstalleerd zijn: 
 - [Docker](https://www.docker.com/)
 - [PHP](https://www.php.net/)
 - [Composer](https://getcomposer.org/)
