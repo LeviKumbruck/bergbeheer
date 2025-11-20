@@ -1,0 +1,39 @@
+<div class="p-6 space-y-6">
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-semibold">Bergen</h1>
+      <p class="text-sm text-slate-300">
+        Overzicht van alle bergen.
+      </p>
+    </div>
+
+    <app-add-mountain (mountainCreated)="onMountainCreated($event)"></app-add-mountain>
+  </div>
+
+  @if (errorMessage) {
+    <div class="rounded-lg border border-red-500/60 bg-red-500/10 px-4 py-2 text-sm text-red-200">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (loadingList) {
+    <p class="text-slate-300 text-sm">Bergen worden geladen...</p>
+  } @else {
+    @if (mountains.length === 0) {
+      <p class="text-slate-300 text-sm">
+        Er zijn nog geen bergen. Gebruik de knop
+        <span class="font-medium">"Nieuwe berg"</span> om er één toe te voegen.
+      </p>
+    } @else {
+      <div class="grid gap-4 md:grid-cols-2">
+        @for (mountain of mountains; track mountain.id) {
+          <app-mountain-item
+            [mountain]="mountain"
+            (updated)="onMountainUpdated($event)"
+            (deleted)="onMountainDeleted($event)"
+          ></app-mountain-item>
+        }
+      </div>
+    }
+  }
+</div>

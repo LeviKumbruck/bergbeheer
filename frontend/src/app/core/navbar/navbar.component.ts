@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../shared/services/authService/auth.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgIf],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

@@ -1,0 +1,31 @@
+<article class="rounded-xl border border-slate-700 bg-slate-800/70 p-4 flex flex-col justify-between">
+  <div class="cursor-pointer" [routerLink]="['/mountains', mountain.id]">
+    <h2 class="text-lg font-semibold text-emerald-400">
+      {{ mountain.name }}
+    </h2>
+    <p class="text-sm text-slate-300">
+      {{ mountain.location }}
+    </p>
+    <p class="text-sm text-slate-400 mt-1">
+      Hoogte: <span class="font-medium">{{ mountain.height }} m</span>
+    </p>
+
+    @if (mountain.description) {
+      <p class="text-sm text-slate-300 mt-2">
+        {{ mountain.description }}
+      </p>
+    }
+  </div>
+
+  <div class="mt-4 flex justify-end gap-2">
+    <app-edit-mountain
+      [mountain]="mountain"
+      (mountainUpdated)="onMountainUpdated($event)"
+    ></app-edit-mountain>
+
+    <app-delete-mountain
+      [mountain]="mountain"
+      (mountainDeleted)="onMountainDeleted($event)"
+    ></app-delete-mountain>
+  </div>
+</article>

@@ -1,0 +1,33 @@
+<div class="p-6 space-y-4">
+  <a routerLink="/mountains" class="text-sm text-emerald-400 hover:underline">
+    ← Terug naar overzicht
+  </a>
+
+  @if (loading) {
+    <p class="text-slate-300 text-sm">Berg wordt geladen...</p>
+  } @else if (errorMessage) {
+    <p class="text-red-400 text-sm">{{ errorMessage }}</p>
+  } @else if (mountain) {
+    <div class="rounded-xl border border-slate-700 bg-slate-800/70 p-6">
+      <h1 class="text-2xl font-semibold text-emerald-400">
+        {{ mountain.name }}
+      </h1>
+      <p class="text-sm text-slate-300 mt-1">
+        {{ mountain.location }}
+      </p>
+      <p class="text-sm text-slate-400 mt-2">
+        Hoogte: <span class="font-semibold">{{ mountain.height }} m</span>
+      </p>
+
+      @if (mountain.description) {
+        <p class="mt-4 text-slate-200">
+          {{ mountain.description }}
+        </p>
+      }
+
+      <p class="mt-4 text-xs text-slate-400">
+        Aangemaakt op {{ mountain.created_at | date: 'medium' }} • Laatst bijgewerkt op {{ mountain.updated_at | date: 'medium' }}
+      </p>
+    </div>
+  }
+</div>

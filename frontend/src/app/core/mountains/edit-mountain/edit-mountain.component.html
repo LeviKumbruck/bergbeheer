@@ -1,0 +1,99 @@
+<button
+  type="button"
+  (click)="openModal()"
+  class="px-3 py-1.5 text-xs rounded-lg border border-slate-600 bg-slate-800 hover:bg-slate-700 text-slate-100"
+>
+  Bewerken
+</button>
+
+@if (showModal) {
+  <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+    <div class="w-full max-w-lg bg-slate-800 border border-slate-700 rounded-2xl shadow-xl p-6">
+      <h2 class="text-xl font-semibold mb-4">Berg bewerken</h2>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+        <!-- Name -->
+        <div>
+          <label class="block text-sm font-medium mb-1" for="name">Naam</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="w-full rounded-lg border border-slate-600 bg-slate-900/70 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
+          @if (form.controls.name.touched && form.controls.name.invalid) {
+            <div class="mt-1 text-xs text-red-400">
+              Naam is verplicht
+            </div>
+          }
+        </div>
+
+        <!-- Location -->
+        <div>
+          <label class="block text-sm font-medium mb-1" for="location">Locatie</label>
+          <input
+            id="location"
+            type="text"
+            formControlName="location"
+            class="w-full rounded-lg border border-slate-600 bg-slate-900/70 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
+          @if (form.controls.location.touched && form.controls.location.invalid) {
+            <div class="mt-1 text-xs text-red-400">
+              Locatie is verplicht
+            </div>
+          }
+        </div>
+
+        <!-- Height -->
+        <div>
+          <label class="block text-sm font-medium mb-1" for="height">Hoogte (m)</label>
+          <input
+            id="height"
+            type="number"
+            formControlName="height"
+            class="w-full rounded-lg border border-slate-600 bg-slate-900/70 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
+          @if (form.controls.height.touched && form.controls.height.invalid) {
+            <div class="mt-1 text-xs text-red-400">
+              Hoogte is verplicht en moet ≥ 0 zijn
+            </div>
+          }
+        </div>
+
+        <!-- Desciption -->
+        <div>
+          <label class="block text-sm font-medium mb-1" for="description">Beschrijving</label>
+          <textarea
+            id="description"
+            rows="3"
+            formControlName="description"
+            class="w-full rounded-lg border border-slate-600 bg-slate-900/70 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          ></textarea>
+        </div>
+
+        @if (errorMessage) {
+          <p class="text-sm text-red-400">
+            {{ errorMessage }}
+          </p>
+        }
+
+        <div class="mt-4 flex justify-end gap-2">
+          <button
+            type="button"
+            (click)="closeModal()"
+            class="px-4 py-2 rounded-lg border border-slate-600 bg-slate-800 hover:bg-slate-700 text-sm text-slate-100"
+          >
+            Annuleren
+          </button>
+          <button
+            type="submit"
+            [disabled]="form.invalid || loading"
+            class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium text-slate-900"
+          >
+            @if (!loading) { Opslaan } @else { Bezig... }
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
