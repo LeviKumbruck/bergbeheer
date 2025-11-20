@@ -53,7 +53,7 @@ Start een MySQL 8 container met Docker:
 ### 3.2. Database migraties en seeding 
 
 - Voer de migraties uit: ``` php artisan migrate ``` 
-- Om de database te seeden met voorbeeld-bergen: ```bash php artisan db:seed ```
+- Om de database te seeden met voorbeeld-bergen: ``` php artisan db:seed ```
   - Dit roept de `MountainSeeder` aan en voegt enkele test-bergen toe.
 - Er wordt **geen** standaard gebruiker aangemaakt – registreren gebeurt via de frontend of via de API (bv PostMan). 
 
