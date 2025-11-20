@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // REGISTER
+    /*
+    * POST /api/register
+    * register a new user
+    */
+    
     public function register(Request $request)
     {
         $data = $request->validate([
@@ -31,7 +35,10 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // LOGIN
+    /**
+     * POST /api/login
+     * login a user
+     */
     public function login(Request $request)
     {
         $request->validate([
@@ -53,7 +60,10 @@ class AuthController extends Controller
         ], 200);
     }
 
-    // LOGOUT
+    /**
+     * POST /api/logout
+     * logout a user
+     */
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
