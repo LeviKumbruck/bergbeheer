@@ -77,7 +77,7 @@ Start een MySQL 8 container met Docker:
   - `GET /api/mountains` Haalt alle bergen op.
   - `GET /api/mountains/{id}` Haalt details van één berg op.
   - `POST /api/mountains` Maakt een berg aan.
-    - Body: ```json { "name": "Mont Blanc", "location": "France / Italy", "height": 4808, "description": "Highest mountain in the Alps." } ```
+    - Body: ``` { "name": "Mont Blanc", "location": "France / Italy", "height": 4808, "description": "Highest mountain in the Alps." } ```
   - `PUT /api/mountains/{id}` Update een bestaande berg (full update).
   - `PATCH /api/mountains/{id}` Partial update (zelfde validatie als PUT).
   - `DELETE /api/mountains/{id}` Verwijdert een berg.
